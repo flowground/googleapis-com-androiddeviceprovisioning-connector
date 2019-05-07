@@ -1,0 +1,66 @@
+{
+    "type": "object",
+    "properties": {
+        "deviceId": {
+            "required": true,
+            "type": "string"
+        },
+        "metadataOwnerId": {
+            "required": true,
+            "type": "string"
+        },
+        "alt": {
+            "type": "string",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "default": "json"
+        },
+        "callback": {
+            "type": "string"
+        },
+        "fields": {
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "uploadType": {
+            "type": "string"
+        },
+        "upload_protocol": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Request to set metadata for a device.",
+            "properties": {
+                "deviceMetadata": {
+                    "description": "Required. The metdata to attach to the device.",
+                    "properties": {
+                        "entries": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Metadata entries recorded as key-value pairs.",
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

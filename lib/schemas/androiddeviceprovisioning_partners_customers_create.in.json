@@ -1,0 +1,95 @@
+{
+    "type": "object",
+    "properties": {
+        "parent": {
+            "required": true,
+            "type": "string"
+        },
+        "access_token": {
+            "type": "string"
+        },
+        "alt": {
+            "type": "string",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "default": "json"
+        },
+        "callback": {
+            "type": "string"
+        },
+        "fields": {
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "uploadType": {
+            "type": "string"
+        },
+        "upload_protocol": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Request message to create a customer.",
+            "properties": {
+                "customer": {
+                    "description": "Required. The company data to populate the new customer. Must contain a\nvalue for `companyName` and at least one `owner_email` that's associated\nwith a Google Account. The values for `companyId` and `name` must be empty.",
+                    "properties": {
+                        "adminEmails": {
+                            "description": "Input only. Optional. Email address of customer's users in the admin role.\nEach email address must be associated with a Google Account.",
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "companyId": {
+                            "description": "Output only. The ID of the company. Assigned by the server.",
+                            "format": "int64",
+                            "type": "string"
+                        },
+                        "companyName": {
+                            "description": "Required. The name of the company. For example _XYZ Corp_. Displayed to the\ncompany's employees in the zero-touch enrollment portal.",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Output only. The API resource name of the company. The resource name is one\nof the following formats:\n\n* `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]`\n* `partners/[PARTNER_ID]/vendors/[VENDOR_ID]`\n* `partners/[PARTNER_ID]/vendors/[VENDOR_ID]/customers/[CUSTOMER_ID]`\n\nAssigned by the server.",
+                            "type": "string"
+                        },
+                        "ownerEmails": {
+                            "description": "Input only. Email address of customer's users in the owner role. At least\none `owner_email` is required. Each email address must be associated with a\nGoogle Account. Owners share the same access as admins but can also add,\ndelete, and edit your organization's portal users.",
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "termsStatus": {
+                            "description": "Output only. Whether any user from the company has accepted the latest\nTerms of Service (ToS). See\nTermsStatus.",
+                            "enum": [
+                                "TERMS_STATUS_UNSPECIFIED",
+                                "TERMS_STATUS_NOT_ACCEPTED",
+                                "TERMS_STATUS_ACCEPTED",
+                                "TERMS_STATUS_STALE"
+                            ],
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

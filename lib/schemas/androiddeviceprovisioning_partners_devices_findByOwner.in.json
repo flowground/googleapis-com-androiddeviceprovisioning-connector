@@ -1,0 +1,78 @@
+{
+    "type": "object",
+    "properties": {
+        "partnerId": {
+            "required": true,
+            "type": "string"
+        },
+        "access_token": {
+            "type": "string"
+        },
+        "alt": {
+            "type": "string",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "default": "json"
+        },
+        "callback": {
+            "type": "string"
+        },
+        "fields": {
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "uploadType": {
+            "type": "string"
+        },
+        "upload_protocol": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Request to find devices by customers.",
+            "properties": {
+                "customerId": {
+                    "description": "Required. The list of customer IDs to search for.",
+                    "items": {
+                        "format": "int64",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "limit": {
+                    "description": "Required. The maximum number of devices to show in a page of results. Must\nbe between 1 and 100 inclusive.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "pageToken": {
+                    "description": "A token specifying which result page to return.",
+                    "type": "string"
+                },
+                "sectionType": {
+                    "description": "Required. The section type of the device's provisioning record.",
+                    "enum": [
+                        "SECTION_TYPE_UNSPECIFIED",
+                        "SECTION_TYPE_SIM_LOCK",
+                        "SECTION_TYPE_ZERO_TOUCH"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

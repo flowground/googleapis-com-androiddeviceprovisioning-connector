@@ -1,0 +1,425 @@
+{
+    "title": "Android Device Provisioning Partner",
+    "description": "Automates Android zero-touch enrollment for device resellers, customers, and EMMs.",
+    "docsUrl": "https://developers.google.com/zero-touch/",
+    "url": "https://api.apis.guru/v2/specs/googleapis.com/androiddeviceprovisioning/v1/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://androiddeviceprovisioning.googleapis.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "androiddeviceprovisioning_customers_list": {
+            "main": "./lib/actions/androiddeviceprovisioning_customers_list.js",
+            "title": "Lists the user's customer accounts.",
+            "description": "Lists the user's customer accounts.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/androiddeviceprovisioning_customers_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "androiddeviceprovisioning_partners_devices_metadata": {
+            "main": "./lib/actions/androiddeviceprovisioning_partners_devices_metadata.js",
+            "title": "Updates reseller metadata associated with the device.",
+            "description": "Updates reseller metadata associated with the device.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/androiddeviceprovisioning_partners_devices_metadata.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "androiddeviceprovisioning_partners_customers_list": {
+            "main": "./lib/actions/androiddeviceprovisioning_partners_customers_list.js",
+            "title": "Lists the customers that are enrolled to the reseller identified by the\n`partnerId` argument. This list includes customers that the reseller\ncreated and customers that enrolled themselves using the portal.",
+            "description": "Lists the customers that are enrolled to the reseller identified by the\n`partnerId` argument. This list includes customers that the reseller\ncreated and customers that enrolled themselves using the portal.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/androiddeviceprovisioning_partners_customers_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "androiddeviceprovisioning_partners_devices_claim": {
+            "main": "./lib/actions/androiddeviceprovisioning_partners_devices_claim.js",
+            "title": "Claims a device for a customer and adds it to zero-touch enrollment. If the\ndevice is already claimed by another customer, the call returns an error.",
+            "description": "Claims a device for a customer and adds it to zero-touch enrollment. If the\ndevice is already claimed by another customer, the call returns an error.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/androiddeviceprovisioning_partners_devices_claim.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "androiddeviceprovisioning_partners_devices_claimAsync": {
+            "main": "./lib/actions/androiddeviceprovisioning_partners_devices_claimAsync.js",
+            "title": "Claims a batch of devices for a customer asynchronously. Adds the devices\nto zero-touch enrollment. To learn more, read [Long-running batch\noperations](/zero-touch/guides/how-it-works#operations).",
+            "description": "Claims a batch of devices for a customer asynchronously. Adds the devices\nto zero-touch enrollment. To learn more, read [Long-running batch\noperations](/zero-touch/guides/how-it-works#operations).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/androiddeviceprovisioning_partners_devices_claimAsync.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "androiddeviceprovisioning_partners_devices_findByIdentifier": {
+            "main": "./lib/actions/androiddeviceprovisioning_partners_devices_findByIdentifier.js",
+            "title": "Finds devices by hardware identifiers, such as IMEI.",
+            "description": "Finds devices by hardware identifiers, such as IMEI.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/androiddeviceprovisioning_partners_devices_findByIdentifier.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "androiddeviceprovisioning_partners_devices_findByOwner": {
+            "main": "./lib/actions/androiddeviceprovisioning_partners_devices_findByOwner.js",
+            "title": "Finds devices claimed for customers. The results only contain devices\nregistered to the reseller that's identified by the `partnerId` argument.\nThe customer's devices purchased from other resellers don't appear in the\nresults.",
+            "description": "Finds devices claimed for customers. The results only contain devices\nregistered to the reseller that's identified by the `partnerId` argument.\nThe customer's devices purchased from other resellers don't appear in the\nresults.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/androiddeviceprovisioning_partners_devices_findByOwner.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "androiddeviceprovisioning_partners_devices_unclaim": {
+            "main": "./lib/actions/androiddeviceprovisioning_partners_devices_unclaim.js",
+            "title": "Unclaims a device from a customer and removes it from zero-touch\nenrollment.",
+            "description": "Unclaims a device from a customer and removes it from zero-touch\nenrollment.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/androiddeviceprovisioning_partners_devices_unclaim.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "androiddeviceprovisioning_partners_devices_unclaimAsync": {
+            "main": "./lib/actions/androiddeviceprovisioning_partners_devices_unclaimAsync.js",
+            "title": "Unclaims a batch of devices for a customer asynchronously. Removes the\ndevices from zero-touch enrollment. To learn more, read [Long-running batch\noperations](/zero-touch/guides/how-it-works#operations).",
+            "description": "Unclaims a batch of devices for a customer asynchronously. Removes the\ndevices from zero-touch enrollment. To learn more, read [Long-running batch\noperations](/zero-touch/guides/how-it-works#operations).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/androiddeviceprovisioning_partners_devices_unclaimAsync.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "androiddeviceprovisioning_partners_devices_updateMetadataAsync": {
+            "main": "./lib/actions/androiddeviceprovisioning_partners_devices_updateMetadataAsync.js",
+            "title": "Updates the reseller metadata attached to a batch of devices. This method\nupdates devices asynchronously and returns an `Operation` that can be used\nto track progress. Read [Long-running batch\noperations](/zero-touch/guides/how-it-works#operations).",
+            "description": "Updates the reseller metadata attached to a batch of devices. This method\nupdates devices asynchronously and returns an `Operation` that can be used\nto track progress. Read [Long-running batch\noperations](/zero-touch/guides/how-it-works#operations).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/androiddeviceprovisioning_partners_devices_updateMetadataAsync.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "androiddeviceprovisioning_customers_configurations_delete": {
+            "main": "./lib/actions/androiddeviceprovisioning_customers_configurations_delete.js",
+            "title": "Deletes an unused configuration. The API call fails if the customer has\ndevices with the configuration applied.",
+            "description": "Deletes an unused configuration. The API call fails if the customer has\ndevices with the configuration applied.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/androiddeviceprovisioning_customers_configurations_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "androiddeviceprovisioning_operations_get": {
+            "main": "./lib/actions/androiddeviceprovisioning_operations_get.js",
+            "title": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
+            "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/androiddeviceprovisioning_operations_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "androiddeviceprovisioning_customers_configurations_patch": {
+            "main": "./lib/actions/androiddeviceprovisioning_customers_configurations_patch.js",
+            "title": "Updates a configuration's field values.",
+            "description": "Updates a configuration's field values.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/androiddeviceprovisioning_customers_configurations_patch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "androiddeviceprovisioning_customers_configurations_list": {
+            "main": "./lib/actions/androiddeviceprovisioning_customers_configurations_list.js",
+            "title": "Lists a customer's configurations.",
+            "description": "Lists a customer's configurations.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/androiddeviceprovisioning_customers_configurations_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "androiddeviceprovisioning_customers_configurations_create": {
+            "main": "./lib/actions/androiddeviceprovisioning_customers_configurations_create.js",
+            "title": "Creates a new configuration. Once created, a customer can apply the\nconfiguration to devices.",
+            "description": "Creates a new configuration. Once created, a customer can apply the\nconfiguration to devices.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/androiddeviceprovisioning_customers_configurations_create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "androiddeviceprovisioning_partners_vendors_customers_list": {
+            "main": "./lib/actions/androiddeviceprovisioning_partners_vendors_customers_list.js",
+            "title": "Lists the customers of the vendor.",
+            "description": "Lists the customers of the vendor.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/androiddeviceprovisioning_partners_vendors_customers_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "androiddeviceprovisioning_partners_customers_create": {
+            "main": "./lib/actions/androiddeviceprovisioning_partners_customers_create.js",
+            "title": "Creates a customer for zero-touch enrollment. After the method returns\nsuccessfully, admin and owner roles can manage devices and EMM configs\nby calling API methods or using their zero-touch enrollment portal.\nThe customer receives an email that welcomes them to zero-touch enrollment\nand explains how to sign into the portal.",
+            "description": "Creates a customer for zero-touch enrollment. After the method returns\nsuccessfully, admin and owner roles can manage devices and EMM configs\nby calling API methods or using their zero-touch enrollment portal.\nThe customer receives an email that welcomes them to zero-touch enrollment\nand explains how to sign into the portal.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/androiddeviceprovisioning_partners_customers_create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "androiddeviceprovisioning_customers_devices_list": {
+            "main": "./lib/actions/androiddeviceprovisioning_customers_devices_list.js",
+            "title": "Lists a customer's devices.",
+            "description": "Lists a customer's devices.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/androiddeviceprovisioning_customers_devices_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "androiddeviceprovisioning_customers_devices_applyConfiguration": {
+            "main": "./lib/actions/androiddeviceprovisioning_customers_devices_applyConfiguration.js",
+            "title": "Applies a Configuration to the device to register the device for zero-touch\nenrollment. After applying a configuration to a device, the device\nautomatically provisions itself on first boot, or next factory reset.",
+            "description": "Applies a Configuration to the device to register the device for zero-touch\nenrollment. After applying a configuration to a device, the device\nautomatically provisions itself on first boot, or next factory reset.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/androiddeviceprovisioning_customers_devices_applyConfiguration.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "androiddeviceprovisioning_customers_devices_removeConfiguration": {
+            "main": "./lib/actions/androiddeviceprovisioning_customers_devices_removeConfiguration.js",
+            "title": "Removes a configuration from device.",
+            "description": "Removes a configuration from device.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/androiddeviceprovisioning_customers_devices_removeConfiguration.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "androiddeviceprovisioning_customers_devices_unclaim": {
+            "main": "./lib/actions/androiddeviceprovisioning_customers_devices_unclaim.js",
+            "title": "Unclaims a device from a customer and removes it from zero-touch\nenrollment.\n\nAfter removing a device, a customer must contact their reseller to register\nthe device into zero-touch enrollment again.",
+            "description": "Unclaims a device from a customer and removes it from zero-touch\nenrollment.\n\nAfter removing a device, a customer must contact their reseller to register\nthe device into zero-touch enrollment again.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/androiddeviceprovisioning_customers_devices_unclaim.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "androiddeviceprovisioning_customers_dpcs_list": {
+            "main": "./lib/actions/androiddeviceprovisioning_customers_dpcs_list.js",
+            "title": "Lists the DPCs (device policy controllers) that support zero-touch\nenrollment.",
+            "description": "Lists the DPCs (device policy controllers) that support zero-touch\nenrollment.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/androiddeviceprovisioning_customers_dpcs_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "androiddeviceprovisioning_partners_vendors_list": {
+            "main": "./lib/actions/androiddeviceprovisioning_partners_vendors_list.js",
+            "title": "Lists the vendors of the partner.",
+            "description": "Lists the vendors of the partner.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/androiddeviceprovisioning_partners_vendors_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
